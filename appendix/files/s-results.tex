@@ -1,0 +1,46 @@
+%-------------------------------------------------------------------------------
+\section{Additional Results}\label{Results}
+%-------------------------------------------------------------------------------
+This section presents all my results for each of the parameterizations in Table \ref{Parameterizations}. The \textit{exact solution} is constructed using 100,000 random draws for the evaluation of $E\max$ at all states at the true parameter values. The \textit{exact sample} refers to a set of 1,000 simulated agents based on the \textit{exact solution}. As on overall measure of the approximation error, I use the root-mean-square error (RMSE) by comparing the choice probabilities in the \textit{exact sample} to a newly simulated set of 1,000 agents based on the relevant alternative parameterization of the model.
+%-------------------------------------------------------------------------------
+\subsection{Parameterizations}
+%-------------------------------------------------------------------------------
+\input{../material/table_parameterizations.tex} 
+%-------------------------------------------------------------------------------
+\subsection{Choice Patterns}
+%-------------------------------------------------------------------------------
+Figure \ref{Choice Patterns} shows the share of agents in the \textit{exact sample} opting for each of the four alternatives by period.\\\newline
+\input{../material/figure_patterns.tex}\clearpage
+%-------------------------------------------------------------------------------
+\subsection{Correct Choices}
+%-------------------------------------------------------------------------------
+Tables \ref{Correct Choices: One} - \ref{Correct Choices: Three} show the proportion of correct choices for alternative interpolation schemes.
+\input{../material/table_choices_one.tex}
+\input{../material/table_choices_two.tex}
+\input{../material/table_choices_three.tex}
+%-------------------------------------------------------------------------------
+\subsection{Monte Carlo Exercise}
+%-------------------------------------------------------------------------------
+Tables \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} show the estimation performance for each of the model parameters during the initial Monte Carlo exercise. Let $\theta_i$ denote the true value of parameter $i$, $\hat{\theta}_i$ its average estimate across all bootstrap replications, and $\hat{\theta}_{ij}$ the estimated parameter in iteration $j$. The statistics in the Table \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} are calculated as follows:
+
+\renewcommand\arraystretch{2}
+\begin{align*}\begin{array}{l@{\qquad}l}
+\text{Bias} & \hat{\theta}_i - \theta_i\\\medskip
+\text{$t$ - statistic} & \left(\frac{\hat{\theta}_i - \theta_i}{\sigma_{\hat{\theta_i}}}\right) \sqrt{40} \\
+\text{Standard Deviation} & \left[ \frac{1}{39} \sum^{40}_{j = 1} (\hat{\theta}_{ij} - \hat{\theta}_i)^2
+\right]^{\tfrac{1}{2}}
+\end{array}
+\end{align*}
+\renewcommand\arraystretch{1}
+
+Note that the table contains the Cholesky decomposition parameters $a_{ij}$ of the covariance matrix of the shocks to the immediate rewards. I report the RMSE, the total number of evaluations of the criterion function, and the number of steps of the optimizer as their average across all 40 bootstrap iterations.\\\newline
+%
+I specify 200 interpolation points, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer during each estimation.\clearpage
+
+\input{../material/table_monte_carlo_one.tex}
+\input{../material/table_monte_carlo_two.tex}
+\input{../material/table_monte_carlo_three.tex}\clearpage
+%-------------------------------------------------------------------------------
+\subsection{Interpolation Schemes}
+%-------------------------------------------------------------------------------
+Table \ref{Interpolation Schemes} shows the estimation results based on alternative interpolation schemes. For the static estimation, I solve the complete DP problem, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer. I use a single processor for all estimations.\input{../material/table_schemes.tex}

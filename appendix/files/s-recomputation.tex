@@ -1,0 +1,23 @@
+%-------------------------------------------------------------------------------
+\section{Recomputation Instructions}
+%-------------------------------------------------------------------------------
+I provide an image of a virtual machine (VM) for download to ensure full recomputability of my results. The image contains a software-based emulation of a computer, where all the required software is already pre-installed. This makes recomputation straightforward.\\\newline
+%
+Two additional software tools are required: (1)  \texttt{VirtualBox} and (2) \texttt{Vagrant}. \texttt{VirtualBox} is a virtualization software, while \texttt{Vagrant} provides a convenient wrapper around it. Both are free and open-source. Please consult their websites for installation instructions. The following instructions were tested for \texttt{VirtualBox 5.0} and \texttt{Vagrant 1.8}.\newline
+
+Once \texttt{VirtualBox} and \texttt{Vagrant} are available, the image can be downloaded and accessed by the following commands:
+
+\vspace{0.2cm}\begin{lstlisting}[language=bash]
+    $ vagrant init structRecomputation/base
+    $ vagrant up --provider virtualbox
+    $ vagrant ssh
+\end{lstlisting}\vspace{0.2cm}
+
+As all the required software is already installed, recomputation is straightforward. Simply typing the following command into the terminal produces all the results in the paper:
+\vspace{0.2cm}\begin{lstlisting}[language=bash]
+    $ ./recompute
+\end{lstlisting}\vspace{0.2cm}
+
+The output files will be available in the \verb+_published+ subdirectory. This process takes a couple of days due to the large number of bootstrap iterations for the initial Monte Carlo exercise. There is a slight difference in the order and sign of the coefficients between the output files and the results in this paper, please see  \verb+respy+'s online documentation for details. Table \ref{Mapping} provides the mapping between the output files and the results reported in the two relevant publications.
+
+\input{../material/table_mappings.tex}
