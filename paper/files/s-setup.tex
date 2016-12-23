@@ -7,13 +7,7 @@ I now discuss the economics motivating the model analyzed by \citet{Keane.1994} 
 %-------------------------------------------------------------------------------
 \citet{Keane.1994} develop a model in which an agent decides among $K$ possible alternatives in each of $T$ (finite) discrete periods of time. Alternatives are defined to be mutually exclusive and $d_k(t) = 1$ indicates that alternative $k$ is chosen at time $t$ and $d_k(t)  = 0$ indicates otherwise. Associated with each choice is an immediate reward $R_k(S(t))$ that is known to the agent at time $t$ but partly unknown from the perspective of periods prior to $t$. The state space $S(t)$ encompasses all the information available to the agent at time $t$ that affects immediate and future rewards.\\\newline
 %
-Figure \ref{Timing} depicts the timing of events in the model for two generic time periods. At the beginning of period $t$ the agent fully learns about all immediate rewards, chooses one of the alternatives and receives the corresponding payoffs. The state space is then updated according to the agent's state experience and the process is repeated in $t + 1$.
-%
-\begin{figure}\caption{Timing}\label{Timing}\vspace{1.0cm}\centering
-\input{../material/timing.tex}
-\end{figure}
-%
-Agents are forward looking. Thus, they do not simply choose the alternative with the highest immediate rewards each period. Instead, their objective at any time $\tau$ is to maximize the expected rewards over the remaining time horizon:
+At the beginning of each period $t$ the agent fully learns about all immediate rewards, chooses one of the alternatives and receives the corresponding payoffs. The state space is then updated according to the agent's state experience and the process is repeated in $t + 1$. Agents are forward looking. Thus, they do not simply choose the alternative with the highest immediate rewards each period. Instead, their objective at any time $\tau$ is to maximize the expected rewards over the remaining time horizon:
 %
 \begin{align}\label{expectation}
 \max_{\{d_k(t)\}_{k \in K}} E\left[ \sum_{\tau = t}^T \delta^{\tau - t} \sum_{k\in K}R_k(\tau)d_k(\tau)\Bigg| S(t)\right].
