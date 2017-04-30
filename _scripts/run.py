@@ -6,7 +6,7 @@
 import shutil
 import os
 
-DIRECTORIES = ['paper', 'appendix', 'letter']
+DIRECTORIES = ['paper', 'appendix', 'notes', 'letter']
 
 for _ in range(2):
     for dir_ in DIRECTORIES:
@@ -16,21 +16,9 @@ for _ in range(2):
         shutil.move('main.pdf', '../' + dir_ + '.pdf')
         os.chdir('../')
 
-# I need to manually add the cv.
-os.chdir('_submodules/curriculum_vitae/sources')
-os.system('pdflatex eisenhauer_cv.tex')
-shutil.move('eisenhauer_cv.pdf', '../../../cv.pdf')
-os.chdir('../../../')
-
 # Concatenate all for the submission.
-cmd = 'pdftk paper.pdf appendix.pdf cat output eisenhauer-manuscript.pdf'
+cmd = 'pdftk letter.pdf paper.pdf appendix.pdf notes.pdf cat output eisenhauer-full.pdf'
 os.system(cmd)
-
-cmd = 'pdftk letter.pdf cv.pdf cat output eisenhauer-letter.pdf'
-os.system(cmd)
-
-for dir_ in DIRECTORIES + ['cv']:
-    os.unlink(dir_ + '.pdf')
 
 # Cleanup subdirectories
 for dir_ in DIRECTORIES:

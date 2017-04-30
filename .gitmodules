@@ -1,6 +1,3 @@
 [submodule "_submodules/bibliography"]
 	path = _submodules/bibliography
 	url = https://github.com/peisenha/bibliography.git
-[submodule "_submodules/curriculum_vitae"]
-	path = _submodules/curriculum_vitae
-	url = https://github.com/peisenha/curriculum_vitae.git
