@@ -6,7 +6,7 @@
 import shutil
 import os
 
-DIRECTORIES = ['paper', 'appendix', 'notes', 'letter']
+DIRECTORIES = ['paper', 'appendix', 'notes', 'responses', 'letter']
 
 for _ in range(2):
     for dir_ in DIRECTORIES:
@@ -17,7 +17,7 @@ for _ in range(2):
         os.chdir('../')
 
 # Concatenate all for the submission.
-cmd = 'pdftk letter.pdf paper.pdf appendix.pdf notes.pdf cat output eisenhauer-full.pdf'
+cmd = 'pdftk letter.pdf responses.pdf paper.pdf appendix.pdf notes.pdf cat output eisenhauer-full.pdf'
 os.system(cmd)
 
 # Cleanup subdirectories
