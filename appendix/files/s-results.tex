@@ -21,7 +21,7 @@ Tables \ref{Correct Choices: One} - \ref{Correct Choices: Three} show the propor
 %-------------------------------------------------------------------------------
 \subsection{Monte Carlo Exercise}
 %-------------------------------------------------------------------------------
-Tables \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} show the estimation performance for each of the model parameters during the initial Monte Carlo exercise. Let $\theta_i$ denote the true value of parameter $i$, $\hat{\theta}_i$ its average estimate across all bootstrap replications, and $\hat{\theta}_{ij}$ the estimated parameter in iteration $j$. The statistics in the Table \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} are calculated as follows:
+Tables \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} show the estimation performance for each of the model parameters during the initial Monte Carlo exercise. Let $\theta_i$ denote the true value of parameter $i$, $\hat{\theta}_i$ its average estimate across all Monte Carlo iterations, and $\hat{\theta}_{ij}$ the estimated parameter in iteration $j$. The statistics in the Table \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} are calculated as follows:
 
 \renewcommand\arraystretch{2}
 \begin{align*}\begin{array}{l@{\qquad}l}
@@ -33,7 +33,7 @@ Tables \ref{Monte Carlo: One} - \ref{Monte Carlo: Three} show the estimation per
 \end{align*}
 \renewcommand\arraystretch{1}
 
-Note that the table contains the Cholesky decomposition parameters $a_{ij}$ of the covariance matrix of the shocks to the immediate rewards. I report the RMSE, the total number of evaluations of the criterion function, and the number of steps of the optimizer as their average across all 40 bootstrap iterations.\\\newline
+Note that the table contains the Cholesky decomposition parameters $a_{ij}$ of the covariance matrix of the shocks to the immediate rewards. I report the RMSE, the total number of evaluations of the criterion function, and the number of steps of the optimizer as their average across all 40 Monte Carlo iterations.\\\newline
 %
 I specify 200 interpolation points, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer during each estimation.\clearpage
 
@@ -41,10 +41,12 @@ I specify 200 interpolation points, use 500 random draws for the evaluation of $
 \input{../material/table_monte_carlo_two.tex}
 \input{../material/table_monte_carlo_three.tex}\clearpage
 %-------------------------------------------------------------------------------
+\subsection{Noise in Criterion Function}\label{Noise in Criterion Function}
+%-------------------------------------------------------------------------------
+Figure \ref{Criterion Functions} shows the exact and approximate criterion function around the true parameter values. To get a sense of a possible discrepancy between the two, I perturb $\beta_1$ around its true value in 100\$ increments. This parameter captures the effect of tuition cost on educational enrollment and is of particular interest for the ex ante evaluation of tuition policies.\footnote{See \citet{Keane.1997} and \citet{Keane.2001} for examples.} While the exact criterion function has its minimum at the actual value this is not true for for the approximated function. The latter attains its minimum at a perturbation of -\$100. This casts doubt on the quality of the approximation.
+
+\input{../material/figure_criterions.tex}
+%-------------------------------------------------------------------------------
 \subsection{Interpolation Schemes}
 %-------------------------------------------------------------------------------
-Table \ref{Interpolation Schemes} shows the estimation results based on alternative interpolation schemes. For the static estimation, I solve the complete DP problem, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer. I use a single processor for all estimations.\input{../material/table_schemes.tex}
-%-------------------------------------------------------------------------------
-\subsection{Smoothing Parameters}
-%-------------------------------------------------------------------------------
-Table \ref{Smoothing Schemes} shows the estimation results based on alternative smoothing parameters. For the static estimation, I solve the complete DP problem, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer. I use a single processor for all estimations.\input{../material/table_smoothing.tex}
+Table \ref{Interpolation Schemes} repeats the estimation results based on alternative interpolation schemes. For the static estimation, I solve the complete DP problem, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer. I use a single processor for all estimations.\input{../material/table_schemes.tex}

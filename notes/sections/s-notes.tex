@@ -4,19 +4,15 @@
 \paragraph{Miscellaneous}
 
 \begin{boenumerate}
-\item The formatting of the thousands is not done properly.
-\item I need to properly update the release on PYPI to 1.0.1 and note in the changelog the changes. Before, however, I need to create a new set of regression tests and update the documentation. Currently, I am using 1.0.1dev. Afterwards, make sure to update the venv creation scripts, the VM, etc.
-\item Why is Table B.8 reproduced in the Appendix, it seems to be the same as Table 2 in the main part of the paper.
-\item The Table with Correct Choices changes for the dataset one, I now use the limited interpolation scheme there as well to be consistent with the Monte Carlo Exercises.
+\item I need to properly update the release on PYPI to 1.0.1 and note in the changelog the changes. Before, however, I need to create a new set of regression tests and update the documentation.  Afterwards, make sure to update the venv creation scripts, the VM, etc.
 \item The current version of the virtual box does contain the results from a debug run. I want this not to be the case with the new box, instead it should contain the true results from the paper.
-\item Can I confirm somewhere that the original authors used the true values as the start? How about the use of the limited interpolation model for the evaluation of the correct choices, probably used there as well, right?
+\item Can I confirm somewhere that the original authors used the true values as the start?
 \end{boenumerate}
 
 \paragraph{Reports}
 
 \begin{boenumerate}
-\item Initially I want to make clean which numbers changed in the revision.
-\item Regarding the referee's first comment, I will have Tobias and Christian read the paper and interview them afterwards.
+
 \item The new paper by Keane on smoothing \citep{Bruins.2015}, ask referee if reference is correct. Set up secure channel to communicate? I am thinking of a graph that shows the RMSE as a function of smoothing parameter. Or let the estimator run and then from converged point restart with smaller bandwidth, etc... Note that this is another tuning parameter, among many others (etc. optimizer) that has nothing to do with the approximation method.
 \item I need an overview statistic capturing the advances in computing power and then I will do exactly what the referee asks for.
 \item The recomputation instructions never state that I imagine them having Ubuntu.
