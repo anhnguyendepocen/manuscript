@@ -16,9 +16,16 @@ for _ in range(2):
         shutil.move('main.pdf', '../' + dir_ + '.pdf')
         os.chdir('../')
 
-# Concatenate all for the submission.
+# Concatenate all for the review.
 cmd = 'pdftk letter.pdf responses.pdf paper.pdf appendix.pdf cat output eisenhauer-full.pdf'
 os.system(cmd)
+
+# Concatenate all for the submission and some additional renaming.
+cmd = 'pdftk paper.pdf appendix.pdf cat output eisenhauer-manuscript.pdf'
+os.system(cmd)
+
+for label in ['letter', 'responses']:
+    shutil.copy(label + '.pdf', 'eisenhauer-' + label + '.pdf')
 
 # Cleanup subdirectories
 for dir_ in DIRECTORIES:
