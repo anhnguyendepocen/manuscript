@@ -47,4 +47,7 @@ Figure \ref{Criterion Functions} shows the exact and approximate criterion funct
 %-------------------------------------------------------------------------------
 \subsection{Interpolation Schemes}
 %-------------------------------------------------------------------------------
-Table \ref{Interpolation Schemes} repeats the estimation results based on alternative interpolation schemes. For the static estimation, I solve the DP problem at all states, use 500 random draws for the evaluation of $E\max$, and allow for a maximum of 1,000 evaluations of the criterion function by the optimizer. I use a single processor to ensure comparability of computation times.\input{../material/table_schemes.tex}
+Table \ref{Interpolation Schemes} repeats the estimation results based on alternative interpolation schemes. I use a single processor to ensure comparability of computation times.
+\\\newline\input{../material/table_schemes.tex}
+%
+Table \ref{Static Estimation} shows the estimated parameter values from the misspecified static estimation that provides the starting values for the Monte Carlo Exercise. I solve the DP problem at all states and use 500 random draws for the evaluation of $E\max$. I allow for a maximum of 1,000 evaluations of the criterion function by the optimizer which terminates after 284 steps. Each Monte Carlo iteration starts with a RMSE of 0.16.\input{../material/table_static_start.tex}
