@@ -2,7 +2,7 @@
 %-------------------------------------------------------------------------------
 Thank you very much for your constructive comments. I hope that I am able to address each of them to your satisfaction.\\\newline
 %
-Please note that nearly all the new material is only available in the Appendix as a ten page limit for the main paper is strictly enforced by the editorial office. In addition to the changes you requested, I also strengthened my results regarding the trade-off between the number of interpolation points and accuracy of estimation results. These findings are now based on a Monte Carlo exercise as well. All other aspects of the paper remain mostly unchanged. The reported results are slightly different due to a refactoring of the Monte Carlo exercises that changed the random subsamples used in the analysis. All general patterns remain unaffected.
+Please note that nearly all the new material is only available in the Appendix as a ten page limit for the main paper is strictly enforced by the editorial office. In addition to the changes you requested, I also strengthened my results regarding the trade-off between the number of interpolation points and accuracy of estimation results. These findings are now based on a Monte Carlo exercise as well and not just a single estimation on a random subsample. All other aspects of the paper remain mostly unchanged. The reported results are slightly different due to a refactoring of the Monte Carlo exercises that changed the random subsamples used in the analysis. All general patterns remain unaffected by these changes.
 %-------------------------------------------------------------------------------
 \begin{boenumerate}
 %-------------------------------------------------------------------------------
@@ -10,23 +10,25 @@ Please note that nearly all the new material is only available in the Appendix a
 %-------------------------------------------------------------------------------
 \item \textit{First, the KW paper can be thought of as consisting of two parts: First, an analysis of the accuracy of the approximate solution in terms of the value functions and policy functions. Second, an analysis of how using approximate solutions for DCDP models affects parameter estimates when those models are estimated. The part of the present paper that deals with accuracy of the approximate solution seems fine, but the part of the paper that deals with estimation (starting on the middle of page 8) is very confusing.}\vspace{0.5cm}
 
-Thank you very much for pointing this out. I have rewritten the relevant part of the paper based on the comments of numerous research assistants. I hope it is clear now.
+Thank you very much for pointing this out. I have carefully restructured and rewritten the relevant part. Moreover, I added several details to Appendix \ref{Appendix Interpolation Schemes} to clarify the estimation procedure. This includes a careful documentation of the starting values from the initial misspecified static estimation.
 %-------------------------------------------------------------------------------
 %	Comment 2
 %-------------------------------------------------------------------------------
 \item \textit{The main problem is that the author never writes out the choice probabilities or the likelihood function for the model, and he doesn't explain how they are simulated. According to KW, they use 200 draws and a kernel smoothing algorithm to smooth the likelihood. But the author doesn't discuss what he does here. This is critical, because his main finding is that there are local maxima problems in the simulated likelihood. But this may well be because of how the tuning parameter is set in the kernel smoothing algorithm. This needs to be discussed. One proposal that has been made by KW in other work is to start with a large bandwidth and then make it smaller as you approach the optimum (or, alternatively, as the author states here, to increase the number of draws as one approaches the optimum).}\vspace{0.5cm}
 
-\cite{Keane.1994} use the kernel smoothing function as described in \citet{McFadden.1989} with a window parameter $\tau$ of 500 (footnote 23 in \cite{Keane.1994}). I follow their example and now state this explicitly in Appendix \ref{Computational Details}.\\\newline
+Thank you for raising this important issue. \cite{Keane.1994} use the kernel smoothing function as described in \citet{McFadden.1989} with a window parameter $\tau$ of 500 (footnote 23 in \cite{Keane.1994}). I follow their example and now state this explicitly in Appendix \ref{Computational Details}.\\\newline
 %
-To further address your concerns, I also investigated the impact of the choice of the window parameter on estimation performance in more detail. I did so by using the same Monte Carlo setup as in the analysis of alternative interpolation schemes in Section \ref{Approximation}. However, I fixed the number of interpolation points at 200 and instead varied the value of the window parameter. I studied two alternative approaches.
+To further address your concerns, I have also investigated the impact of the choice of the window parameter on estimation performance in more detail. I do so by using the same Monte Carlo exercise as in the analysis of alternative interpolation schemes in Section \ref{Approximation}. However, I keep the number of interpolation points at 200 and instead vary the value of the window parameter. I studied two alternative approaches.
 
-\paragraph{Fixed Window Parameter} I simply started the estimations with different window parameters $\tau$ which remain fixed throughout. Table \ref{Fixed Scale Parameters} shows the results. The RMSE remained virtually unchanged at 0.1.
+\begin{boenumerate}
+\item \textbf{Fixed Window Parameter} I have conducted multiple Monte Carlo Exercises with different window parameters $\tau$ which remain fixed throughout. Table \ref{Fixed Scale Parameters} shows the results. The RMSE remained virtually unchanged around 0.1.
 
 \input{material/table_smoothing.tex}
 
-\paragraph{Adaptive Window Parameter} I also ran an estimation where I iteratively reduced the value of $\tau$ as suggested in \citet{Keane.2003}.\footnote{See \citet{Bruins.2015} for the detailed asymptotic and computational analysis of the ideas proposed in \citet{Keane.2003}.} I started each Monte Carlo iteration with the baseline value of 500, but reduced $\tau$ by one quarter each time the optimizer terminated. I then restarted the estimation from the new parameter estimates and repeated this process until there is no further reduction in the RMSE. This allows to reduce the average RMSE from 0.1 to about 0.08.\newline
+\item \textbf{Adaptive Window Parameter} I have also run a Monte Carlo Exercise where I iteratively reduce the value of $\tau$ as suggested in \citet{Keane.2003}.\footnote{See \citet{Bruins.2015} for the detailed asymptotic and computational analysis of the ideas proposed in \citet{Keane.2003}.} I started each Monte Carlo iteration with the baseline value of 500, but reduced $\tau$ by one quarter each time the optimizer terminated. I then restart the estimation from the previous parameter estimates and repeate this process until there is no further reduction in the RMSE. This allows to reduce the average RMSE from 0.1 to about 0.08.\newline
+\end{boenumerate}
 
-To sum up, experimentation with the window parameter allows to slightly reduce the RMSE. However, it is not a substitute for a finer interpolation grid to ensure the reliability of results. This also lines up with the experience in my own applied work.\newline
+To sum up, experimentation with the window parameter allows to slightly reduce the RMSE. However, it is not a substitute for a finer interpolation grid to ensure the accuracy of results. I have previously experienced the same in my own applied work.\newline
 %-------------------------------------------------------------------------------
 %	Comment 3
 %-------------------------------------------------------------------------------
