@@ -3,16 +3,23 @@
 """
 
 # standard library
+import subprocess
 import shutil
 import os
 
 DIRECTORIES = ['paper', 'appendix', 'responses', 'letter']
 
+
+def create():
+    for type_ in ['pdflatex', 'bibtex', 'pdflatex', 'pdflatex']:
+        subprocess.check_call([type_, ' main'])
+
+
 for _ in range(2):
     for dir_ in DIRECTORIES:
         print(dir_)
         os.chdir(dir_)
-        os.system('python create.py')
+        create()
         shutil.move('main.pdf', '../' + dir_ + '.pdf')
         os.chdir('../')
 
