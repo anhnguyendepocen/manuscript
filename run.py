@@ -12,7 +12,7 @@ DIRECTORIES = ['paper', 'appendix', 'responses', 'letter']
 
 def create():
     for type_ in ['pdflatex', 'bibtex', 'pdflatex', 'pdflatex']:
-        subprocess.check_call([type_, ' main'])
+        subprocess.call([type_, 'main'])
 
 
 for _ in range(2):
